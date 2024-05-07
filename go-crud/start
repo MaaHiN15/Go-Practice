@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cleanup() {
+    docker compose down
+}
+
+trap cleanup SIGINT
+
+docker compose up -d 
+CompileDaemon -command=./go-crud
+
+
+

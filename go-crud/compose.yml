@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:alpine3.19
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    restart: always
+    volumes:
+      - gocrud_pgdata:/var/lib/postgresql/data
+  adminer:
+    container_name: db_visualizer
+    image: adminer
+    restart: always
+    ports:
+      - 5556:8080
+
+volumes:
+  gocrud_pgdata:
